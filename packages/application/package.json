@@ -1,0 +1,13 @@
+{
+  "name": "@saasflix/application",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@saasflix/contracts": "workspace:*",
+    "@saasflix/domain-billing": "workspace:*",
+    "@saasflix/domain-entitlements": "workspace:*",
+    "@saasflix/domain-identity": "workspace:*"
+  }
+}

@@ -30,8 +30,12 @@ Responsibilities:
 - passkeys / MFA-capable structure
 - account recovery
 - device/session visibility
-- profile preferences
 - security event history
+
+**Current repository baseline (M1):**
+- `UserAccount`, `AuthMethod`, `AccountSession`, and `SecurityEvent` domain types
+- role + plan aware access decisions
+- active session check helper for session lifetime validation
 
 ### Subscription and billing domain
 Responsibilities:
@@ -44,6 +48,11 @@ Responsibilities:
 - idempotency
 - downgrade / upgrade rules
 
+**Current repository baseline (M2):**
+- `Subscription` and provider webhook event models
+- replay-safe webhook transition helper with duplicate-event handling
+- status transition guardrail logic (`canTransition`)
+
 ### Entitlement domain
 Responsibilities:
 - mapping subscription state to platform capabilities
@@ -52,6 +61,11 @@ Responsibilities:
 - limits / quotas
 - beta / founder-circle access rules
 - experiment gating
+
+**Current repository baseline (M2):**
+- entitlement resolver with precedence: plan defaults -> overrides -> experiments
+- expirable grants and capability checks
+- status-aware entitlement eligibility based on billing state
 
 ### App registry domain
 Responsibilities:
@@ -251,6 +265,10 @@ Model at least:
 - founder / super-admin
 
 Use both role-based and object-aware checks where appropriate. Never rely on frontend hiding as authorization.
+
+**Current repository baseline (M1):**
+- `authorizeAction` with role + plan + object ownership checks
+- explicit separation between surface access (`public/member/admin`) and action-level authorization
 
 ## Consistency and migrations
 

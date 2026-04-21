@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2023"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@saasflix/config": [
+        "packages/config/src/index.ts"
+      ],
+      "@saasflix/contracts": [
+        "packages/contracts/src/index.ts"
+      ],
+      "@saasflix/domain-identity": [
+        "packages/domain/identity/src/index.ts"
+      ],
+      "@saasflix/application": [
+        "packages/application/src/index.ts"
+      ],
+      "@saasflix/telemetry": [
+        "packages/telemetry/src/index.ts"
+      ],
+      "@saasflix/security": [
+        "packages/security/src/index.ts"
+      ],
+      "@saasflix/domain-billing": [
+        "packages/domain/billing/src/index.ts"
+      ],
+      "@saasflix/domain-entitlements": [
+        "packages/domain/entitlements/src/index.ts"
+      ]
+    }
+  }
+}

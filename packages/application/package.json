@@ -8,6 +8,9 @@
     "@saasflix/contracts": "workspace:*",
     "@saasflix/domain-billing": "workspace:*",
     "@saasflix/domain-entitlements": "workspace:*",
-    "@saasflix/domain-identity": "workspace:*"
+    "@saasflix/domain-identity": "workspace:*",
+    "@saasflix/domain-app-registry": "workspace:*",
+    "@saasflix/domain-releases": "workspace:*",
+    "@saasflix/security": "workspace:*"
   }
 }

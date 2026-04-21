@@ -82,6 +82,11 @@ Do not bury deployment logic inside unrelated application folders.
 
 ## CI/CD
 
+**Current repository baseline (M13):**
+- CI workflow scaffold at `.github/workflows/ci.yml` running install + `pnpm check` on push/PR
+- staging deployment compose stack and Dockerfiles for web/admin/worker
+- launch-readiness checklist and staging deploy runbook documented for security/performance/ops gates
+
 The delivery pipeline should support:
 
 - dependency install with lockfiles

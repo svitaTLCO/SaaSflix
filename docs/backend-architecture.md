@@ -77,6 +77,11 @@ Responsibilities:
 - compatibility notes
 - archive and deprecation flags
 
+**Current repository baseline (M3):**
+- `AppRecord` model for canonical app metadata, lifecycle, visibility, availability, and integration type
+- member access guardrails for plan thresholds, invite-only access, founder-circle access, and time-limited experiments
+- discoverability and public-visibility helpers to keep library and storefront behavior explicit
+
 ### Release domain
 Responsibilities:
 - releases / drops
@@ -86,6 +91,11 @@ Responsibilities:
 - staged rollout metadata
 - release tagging
 - release-related notifications
+
+**Current repository baseline (M3):**
+- `AppRelease` model with release type and publication lifecycle state
+- publication state-transition guardrails (`canTransitionPublicationState`)
+- transition application helper (`applyPublicationTransition`) and release visibility helper (`isReleaseVisible`)
 
 ### Feed and publishing domain
 Responsibilities:
@@ -97,6 +107,11 @@ Responsibilities:
 - publication state
 - scheduling
 
+**Current repository baseline (M5):**
+- `FeedPost` model with visibility and publication-state lifecycle
+- publish/archive state-transition guardrails for feed operations
+- content-safety validation to block unsafe inline script payloads in post markdown
+
 ### Discussion domain
 Responsibilities:
 - threads
@@ -106,6 +121,11 @@ Responsibilities:
 - follows / watches
 - moderation state
 - thread types such as support, feedback, release discussion, roadmap discussion
+
+**Current repository baseline (M6):**
+- `DiscussionThread` model with typed thread categories and explicit visibility rules
+- moderation lifecycle transitions (`open/locked/hidden/archived`) with transition guardrails
+- content-safety validation for thread title/body payloads and viewer-scoped visibility checks
 
 ### Support domain
 Responsibilities:
@@ -117,6 +137,11 @@ Responsibilities:
 - escalations
 - app association
 
+**Current repository baseline (M7):**
+- `SupportCase` model with explicit lifecycle states and visibility policies
+- transition guardrails for support workflows with resolved/closed timestamps
+- reusable knowledge-candidate helper for answered/resolved support outcomes
+
 ### Notification domain
 Responsibilities:
 - in-app notifications
@@ -124,6 +149,11 @@ Responsibilities:
 - delivery preferences
 - read state
 - retry and suppression logic
+
+**Current repository baseline (M8):**
+- `NotificationPreference` and `NotificationEvent` models for topic/channel delivery behavior
+- preference-aware delivery gating (`shouldDeliver`) with default in-app fallback
+- notification read-state transition helper with timestamp validation
 
 ### Media and asset domain
 Responsibilities:
@@ -133,11 +163,19 @@ Responsibilities:
 - transformations
 - validation and abuse checks
 
+**Current repository baseline (M9):**
+- `MediaAsset` model with kind-aware size guardrails and storage-key validation
+- boundary validation for MIME, timestamps, and storage namespace safety
+
 ### Search domain
 Responsibilities:
 - indexing app registry, releases, posts, discussions, knowledge articles
 - search ranking rules
 - autocomplete / suggestions
+
+**Current repository baseline (M10):**
+- typed `SearchDocument` model with scoped entity types
+- basic scoring and type-filter helpers for query evaluation
 
 ### Analytics and audit domain
 Responsibilities:
@@ -148,6 +186,10 @@ Responsibilities:
 - privileged operation audit
 - security-relevant event logging
 
+**Current repository baseline (M11):**
+- typed `UsageEvent` model and validator for analytics event ingestion boundaries
+- event-type bucketing helper for admin/ops analytics slices
+
 ### Admin domain
 Responsibilities:
 - moderation
@@ -156,6 +198,12 @@ Responsibilities:
 - support diagnostics
 - plan / entitlement diagnostics
 - operational dashboards
+
+**Current repository baseline (M4):**
+- application-layer secure orchestration for registry upsert and release publish actions
+- centralized authorization enforcement via security policy checks before state changes
+- audit-log emission for privileged admin actions to preserve traceability
+- replay-safe action handling for privileged mutations using action-id inbox semantics
 
 ## Suggested module layout
 

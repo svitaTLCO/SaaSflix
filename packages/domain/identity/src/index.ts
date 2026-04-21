@@ -38,7 +38,8 @@ export interface SecurityEvent {
     | 'session_revoked'
     | 'recovery_requested'
     | 'mfa_challenge_required'
-    | 'password_changed';
+    | 'password_changed'
+    | 'privileged_action';
   readonly occurredAt: string;
   readonly metadata: Record<string, string>;
 }

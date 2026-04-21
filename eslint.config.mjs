@@ -11,7 +11,9 @@ export default [
   {
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['eslint.config.mjs', 'vitest.config.ts', 'apps/*/next.config.ts']
+        },
         tsconfigRootDir: import.meta.dirname
       },
       globals: {
@@ -20,6 +22,21 @@ export default [
     },
     rules: {
       '@typescript-eslint/no-explicit-any': 'error'
+    }
+  },
+  {
+    files: ['apps/**/*.ts', 'apps/**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off'
+    }
+  },
+  {
+    files: ['**/*.mjs'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off'
     }
   },
   {

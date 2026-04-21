@@ -9,7 +9,7 @@ const exampleActor: UserAccount = {
   mfaEnabled: true
 };
 
-export default function AdminHomePage(): JSX.Element {
+export default function AdminHomePage() {
   const allowed = assertSurfaceAccess(exampleActor, 'admin');
 
   return <main>{allowed ? 'Admin operations surface (M1 authz scaffold).' : 'Admin access denied.'}</main>;

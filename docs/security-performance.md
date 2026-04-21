@@ -26,6 +26,7 @@ These surfaces demand the strongest controls:
 - explicit authorization
 - defense in depth
 - replay resistance for critical actions
+- idempotency tracking for privileged write operations
 - auditable privileged operations
 - fail closed where appropriate
 - privacy by design
@@ -62,8 +63,11 @@ All user-supplied content must be handled safely.
 
 Requirements:
 - input validation at every boundary
+- strict timestamp/window validation for time-based release and experiment payloads
+- enforce HTTPS-only launch URLs for registry-managed app handoffs
 - output encoding
 - safe rich-text rendering
+- script/protocol injection checks for markdown-style publishing flows
 - file upload validation
 - malware or abuse scanning for uploads where appropriate
 - anti-spam and anti-abuse controls
@@ -94,6 +98,7 @@ Requirements:
 Audit log at minimum:
 
 - authentication events
+- privileged registry and release publication actions
 - recovery flows
 - session revocations
 - plan changes

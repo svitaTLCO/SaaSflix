@@ -30,8 +30,12 @@ Responsibilities:
 - passkeys / MFA-capable structure
 - account recovery
 - device/session visibility
-- profile preferences
 - security event history
+
+**Current repository baseline (M1):**
+- `UserAccount`, `AuthMethod`, `AccountSession`, and `SecurityEvent` domain types
+- role + plan aware access decisions
+- active session check helper for session lifetime validation
 
 ### Subscription and billing domain
 Responsibilities:
@@ -251,6 +255,10 @@ Model at least:
 - founder / super-admin
 
 Use both role-based and object-aware checks where appropriate. Never rely on frontend hiding as authorization.
+
+**Current repository baseline (M1):**
+- `authorizeAction` with role + plan + object ownership checks
+- explicit separation between surface access (`public/member/admin`) and action-level authorization
 
 ## Consistency and migrations
 

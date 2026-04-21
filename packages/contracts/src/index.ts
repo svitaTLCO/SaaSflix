@@ -33,6 +33,21 @@ export const sessionRevokeRequestSchema = z.object({
   revokedAt: z.string().datetime()
 });
 
+export const billingWebhookPayloadSchema = z.object({
+  providerEventId: z.string().min(1),
+  receivedAt: z.string().datetime(),
+  signature: z.string().min(1),
+  body: z.record(z.string(), z.unknown())
+});
+
+export const providerWebhookReceiptSchema = z.object({
+  providerEventId: z.string().min(1),
+  provider: z.enum(['stripe', 'satispay']),
+  processedAt: z.string().datetime()
+});
+
 export type DomainEvent = z.infer<typeof domainEventSchema>;
 export type SessionIssueRequest = z.infer<typeof sessionIssueRequestSchema>;
 export type SessionRevokeRequest = z.infer<typeof sessionRevokeRequestSchema>;
+export type BillingWebhookPayload = z.infer<typeof billingWebhookPayloadSchema>;
+export type ProviderWebhookReceipt = z.infer<typeof providerWebhookReceiptSchema>;

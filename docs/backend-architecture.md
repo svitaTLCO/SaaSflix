@@ -48,6 +48,11 @@ Responsibilities:
 - idempotency
 - downgrade / upgrade rules
 
+**Current repository baseline (M2):**
+- `Subscription` and provider webhook event models
+- replay-safe webhook transition helper with duplicate-event handling
+- status transition guardrail logic (`canTransition`)
+
 ### Entitlement domain
 Responsibilities:
 - mapping subscription state to platform capabilities
@@ -56,6 +61,11 @@ Responsibilities:
 - limits / quotas
 - beta / founder-circle access rules
 - experiment gating
+
+**Current repository baseline (M2):**
+- entitlement resolver with precedence: plan defaults -> overrides -> experiments
+- expirable grants and capability checks
+- status-aware entitlement eligibility based on billing state
 
 ### App registry domain
 Responsibilities:

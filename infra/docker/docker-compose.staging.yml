@@ -1,0 +1,84 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: saasflix
+      POSTGRES_USER: saasflix
+      POSTGRES_PASSWORD: saasflix
+    ports:
+      - '5432:5432'
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+
+  web:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile
+    environment:
+      NODE_ENV: production
+      APP_ENV: staging
+      DATABASE_URL: postgres://saasflix:saasflix@postgres:5432/saasflix
+      REDIS_URL: redis://redis:6379
+      S3_ENDPOINT: https://s3.local
+      BILLING_PROVIDER: stripe
+      BILLING_WEBHOOK_SECRET: dev-secret
+      SEARCH_PROVIDER: meilisearch
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_API_KEY: dev-key
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      WEB_BASE_URL: http://localhost:3000
+      ADMIN_BASE_URL: http://localhost:3001
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+      - redis
+
+  admin:
+    build:
+      context: ../..
+      dockerfile: apps/admin/Dockerfile
+    environment:
+      NODE_ENV: production
+      APP_ENV: staging
+      DATABASE_URL: postgres://saasflix:saasflix@postgres:5432/saasflix
+      REDIS_URL: redis://redis:6379
+      S3_ENDPOINT: https://s3.local
+      BILLING_PROVIDER: stripe
+      BILLING_WEBHOOK_SECRET: dev-secret
+      SEARCH_PROVIDER: meilisearch
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_API_KEY: dev-key
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      WEB_BASE_URL: http://localhost:3000
+      ADMIN_BASE_URL: http://localhost:3001
+    ports:
+      - '3001:3001'
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: apps/worker/Dockerfile
+    environment:
+      NODE_ENV: production
+      APP_ENV: staging
+      DATABASE_URL: postgres://saasflix:saasflix@postgres:5432/saasflix
+      REDIS_URL: redis://redis:6379
+      S3_ENDPOINT: https://s3.local
+      BILLING_PROVIDER: stripe
+      BILLING_WEBHOOK_SECRET: dev-secret
+      SEARCH_PROVIDER: meilisearch
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_API_KEY: dev-key
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      WEB_BASE_URL: http://localhost:3000
+      ADMIN_BASE_URL: http://localhost:3001
+    depends_on:
+      - postgres
+      - redis

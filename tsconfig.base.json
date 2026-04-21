@@ -40,6 +40,33 @@
       ],
       "@saasflix/domain-entitlements": [
         "packages/domain/entitlements/src/index.ts"
+      ],
+      "@saasflix/domain-app-registry": [
+        "packages/domain/app-registry/src/index.ts"
+      ],
+      "@saasflix/domain-releases": [
+        "packages/domain/releases/src/index.ts"
+      ],
+      "@saasflix/domain-feed": [
+        "packages/domain/feed/src/index.ts"
+      ],
+      "@saasflix/domain-discussions": [
+        "packages/domain/discussions/src/index.ts"
+      ],
+      "@saasflix/domain-support": [
+        "packages/domain/support/src/index.ts"
+      ],
+      "@saasflix/domain-notifications": [
+        "packages/domain/notifications/src/index.ts"
+      ],
+      "@saasflix/domain-media": [
+        "packages/domain/media/src/index.ts"
+      ],
+      "@saasflix/domain-search": [
+        "packages/domain/search/src/index.ts"
+      ],
+      "@saasflix/domain-analytics": [
+        "packages/domain/analytics/src/index.ts"
       ]
     }
   }

@@ -42,6 +42,11 @@ If keeping one frontend app initially, preserve equivalent internal module bound
 
 ## Major frontend surfaces
 
+**Current repository baseline (M12):**
+- member shell route scaffolds for feed/library/drops/roadmap/support/discussions/notifications/profile/billing/security
+- admin shell route scaffolds for registry/releases/moderation/support/analytics/feature flags
+- route-level surface access checks retained for member and admin groups
+
 ### Public site
 - homepage
 - pricing

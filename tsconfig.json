@@ -17,7 +17,34 @@
       "path": "packages/domain/entitlements"
     },
     {
+      "path": "packages/domain/app-registry"
+    },
+    {
+      "path": "packages/domain/releases"
+    },
+    {
+      "path": "packages/domain/feed"
+    },
+    {
+      "path": "packages/domain/discussions"
+    },
+    {
       "path": "packages/application"
+    },
+    {
+      "path": "packages/domain/support"
+    },
+    {
+      "path": "packages/domain/notifications"
+    },
+    {
+      "path": "packages/domain/media"
+    },
+    {
+      "path": "packages/domain/search"
+    },
+    {
+      "path": "packages/domain/analytics"
     },
     {
       "path": "packages/telemetry"

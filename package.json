@@ -7,11 +7,14 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "vitest run",
-    "check": "pnpm lint && pnpm typecheck && pnpm test"
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "staging:check-env": "node -e \"import('@saasflix/config').then(m=>m.parseStagingEnv(process.env));console.log('staging env ok')\""
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/node": "^22.15.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.30.1",
     "@typescript-eslint/parser": "^8.30.1",
     "eslint": "^9.25.0",

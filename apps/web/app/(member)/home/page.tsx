@@ -9,7 +9,7 @@ const exampleMember: UserAccount = {
   mfaEnabled: false
 };
 
-export default function MemberHomePage(): JSX.Element {
+export default function MemberHomePage() {
   const allowed = assertSurfaceAccess(exampleMember, 'member');
 
   return <main>{allowed ? 'Member shell home (M1 authz scaffold).' : 'Sign-in required.'}</main>;
